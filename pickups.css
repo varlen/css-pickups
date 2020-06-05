@@ -25,6 +25,24 @@ body {
     border-radius: 10px;
 }
 
+.tag-input-container {
+    position: relative;
+    text-align: center;
+    top:80%
+}
+
+.tag-input-container input {
+    text-align: center;
+    background-color: #00000000;
+    color: white;
+    border-color: white;
+    border-style: solid;
+    font-family: monospace;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
 
 .vinil img {
     margin-left:40px;

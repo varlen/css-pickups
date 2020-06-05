@@ -1,8 +1,8 @@
-const API_KEY = "<insert giphy api key>";
-const TAG = "party hard";
+const API_KEY = "9VOjI3WZVEclNIrSl6pLNpG592wAVH6G";
+let TAG = "daft punk";
 const RATING = "R";
 const PERIOD_IN_MILLISECONDS = 5000;
-const URL = "https://api.giphy.com/v1/gifs/random?api_key=" + API_KEY + "&tag=" + TAG + "&rating=" + RATING;
+let URL = "https://api.giphy.com/v1/gifs/random?api_key=" + API_KEY + "&tag=" + TAG + "&rating=" + RATING;
 
 function updateBackground(gifUrl) {
   var backgroundImage = "url(\"" + gifUrl + "\")";
@@ -20,6 +20,12 @@ function myPeriodicMethod() {
       setTimeout(myPeriodicMethod, PERIOD_IN_MILLISECONDS);
     }
   });
+}
+
+function updateTag() {
+  TAG = $('.tag-input-container input')[0].value;
+  URL = "https://api.giphy.com/v1/gifs/random?api_key=" + API_KEY + "&tag=" + TAG + "&rating=" + RATING;
+  console.log(TAG);
 }
 
 // schedule the first invocation:
