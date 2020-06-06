@@ -21,16 +21,28 @@ function updateBackground(gifUrl) {
 }
 
 function myPeriodicMethod() {
+
   $.ajax({
     url: URL,
     success: function(data) {
-      console.log(data.data.images.downsized_large.url);
-      updateBackground(data.data.images.downsized_large.url);
+      
+      if (room.connected && room.creator) {
+        socket.emit('bg_update', {
+          url: data.data.images.downsized_large.url 
+        });
+        console.log("Emmited bg_update")
+      } else {
+        console.log("Not creator and not connected")
+      }
+
+      //updateBackground(data.data.images.downsized_large.url);
+
     },
     complete: function() {
       // schedule the next request *only* when the current one is complete:
       setTimeout(myPeriodicMethod, PERIOD_IN_MILLISECONDS);
     }
+
   });
 }
 
@@ -74,6 +86,14 @@ socket.on('connect', function (){
   btnJoinRoom.addEventListener("click", function (evt) {
     joinRoom();
   })
+
+});
+
+socket.on('bg_update', function (data) {
+
+  console.log("bg_update recieved", data);
+
+  updateBackground(data);
 
 });
 

@@ -32,6 +32,8 @@ io.on('connection', function(socket){
 
         console.log( socket.id + " created room " + roomCode );
 
+        socket.handshake.currentRoom = roomCode;
+
         io.sockets.connected[socket.id].emit('room_entered', { room: roomCode, creator: true });
 
     });
@@ -70,7 +72,31 @@ io.on('connection', function(socket){
         //     }
         // });
 
-	});
+    });
+    
+    socket.on('bg_update', function(data) {
+
+        const url = data.url;
+
+        const roomInfo = rooms[socket.handshake.currentRoom];
+
+        if (typeof(roomInfo) == "undefined") {
+            console.log("bad room info");
+            return;
+        }
+
+        if (roomInfo.creator == socket.handshake.usercode) {
+            
+            console.log("bg_update emmited to " + socket.handshake.currentRoom);
+
+            io.in(socket.handshake.currentRoom)
+              .emit('bg_update', url);
+
+        } else {
+            console.log("bg_update failed - User is not creator")
+        }
+
+    })
 
 });
 
