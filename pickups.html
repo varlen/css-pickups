@@ -5,11 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pickups</title>
 <link rel="stylesheet" href="pickups.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+<script>
+    var socket = io();
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 </head>
 <body>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="pickups.js"></script>
+    <script type="text/javascript" src="pickups.js?v=dfhshwtwgh"></script>
     <div class="bg">
+
+        <div>
+            <input id="txt-room-code" type="text" placeholder="Room code" disabled class="room-input"/>
+            <input id="btn-create-room" type="button" value="Create Room" disabled class="room-button"/>
+            <input id="btn-join-room" type="button"  value="Join Room" disabled class="room-button"/>
+            <span id="lbl-status"></span>
+        </div>
 
         <div class="deck">
         
@@ -29,7 +41,7 @@
         </div>
 
         <div class="tag-input-container">
-            <input type="text" id="TAG" onchange="updateTag()" />
+            <input type="text" id="TAG" onchange="updateTag()" placeholder="gif theme" />
         </div>
         
     </div>

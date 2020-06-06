@@ -1,0 +1,23 @@
+{
+  "name": "deckss",
+  "version": "0.0.1",
+  "description": "Share music and gifs with friends",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varlen/css-pickups.git"
+  },
+  "author": "varlen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/varlen/css-pickups/issues"
+  },
+  "homepage": "https://github.com/varlen/css-pickups#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}
