@@ -3,8 +3,8 @@ app = express();
 
 
 crypto = require('crypto');
-var https = require('https').Server(app);
-var io = require('socket.io')(https);
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 rooms = {};
 
@@ -100,7 +100,7 @@ io.on('connection', function(socket){
 
 });
 
-https.listen(3000, function(){
+http.listen(3000, function(){
 
     console.log('listening on *:3000');
     
