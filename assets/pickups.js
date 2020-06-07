@@ -28,7 +28,7 @@ function myPeriodicMethod() {
       
       if (room.connected && room.creator) {
         socket.emit('bg_update', {
-          url: data.data.images.downsized_large.url 
+          url: data.data.images && data.data.images.downsized_large.url 
         });
         console.log("Emmited bg_update")
       } else {
@@ -91,9 +91,11 @@ socket.on('connect', function (){
 
 socket.on('bg_update', function (data) {
 
-  console.log("bg_update recieved", data);
+  if (data) {
+    console.log("bg_update recieved", data);
 
-  updateBackground(data);
+    updateBackground(data); 
+  }
 
 });
 
