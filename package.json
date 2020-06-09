@@ -18,6 +18,8 @@
   "homepage": "https://github.com/varlen/css-pickups#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^2.3.0"
+    "node-uuid": "^1.4.8",
+    "socket.io": "^2.3.0",
+    "spotify-web-api-node": "^4.0.0"
   }
 }

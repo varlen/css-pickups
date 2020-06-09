@@ -87,6 +87,28 @@ socket.on('connect', function (){
     joinRoom();
   })
 
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const error = urlParams.get('error');
+  const code = urlParams.get('code');
+  const state = urlParams.get('state');
+  const description = urlParams.get('description');
+
+  if (!error) {
+    if (code != null && state != null) {
+      socket.emit('spotify', {
+        code : code,
+        state : state
+      });
+    } else {
+      console.log("No errors and bad code/state")
+    }
+  } else {
+    if (!!description) {
+      console.error(description);
+    }
+  }
+
 });
 
 socket.on('bg_update', function (data) {
