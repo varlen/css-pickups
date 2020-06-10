@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const uuid = require('node-uuid');
 const uuidValidator = new RegExp('^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$');
+const PORT = process.env.PORT || 3000;
 
 const crypto = require('crypto');
 var http = require('http').Server(app);
@@ -203,8 +204,8 @@ io.on('connection', function(socket){
 
 });
 
-http.listen(3000, function(){
+http.listen(PORT, function(){
 
-    console.log('listening on *:3000');
+    console.log('listening on *:' + PORT);
     
 });
